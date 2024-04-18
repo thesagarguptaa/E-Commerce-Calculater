@@ -13,9 +13,10 @@ const Calculater = () => {
     ProductCost: "",
     MPFees: "",
     Taxes: "",
+    Shipping: "",
   });
 
-  const { SellingPrice, ProductCost, MPFees, Taxes } = formData;
+  const { SellingPrice, ProductCost, MPFees, Taxes, Shipping } = formData;
 
   const handleOnChange = (e) => {
     setFormData((prevData) => ({
@@ -28,14 +29,14 @@ const Calculater = () => {
   const handleOnSubmit = (e) => {
     e.preventDefault();
 
-    const sell = Number(SellingPrice) + 50;
+    const sell = Number(SellingPrice) + Number(Shipping);
     const Product = Number(ProductCost);
     const Tax = Number(MPFees) + Number(Taxes);
     const FinalDeducation = Tax + Product + 1;
     const Margin = sell - FinalDeducation;
 
     console.log("Selling price with Shipping price 50Rs :- ", sell);
-
+    console.log("Shipping ", Number(Shipping));
     console.log("Product Cost ", Product);
     console.log("MPFEES + TAXES :- ", Tax);
     console.log("Tax + Product + 1(packging ke)", FinalDeducation);
@@ -52,7 +53,7 @@ const Calculater = () => {
     <div>
       <div className="flex  justify-center  items-center">
         <form onSubmit={handleOnSubmit}>
-          <div className=" flex   mt-28">
+          <div className=" flex mt-10">
             {/* SellingPrice */}
             <div className="mb-4  mr-20">
               <label
@@ -144,40 +145,40 @@ const Calculater = () => {
               />
             </div>
           </div>
-          {/* GST
-        <div className="mb-4">
-          <label htmlFor="GST" className="block text-[#3c3c3c]">
-            GST
-          </label>
-          <input
-            required
-            type="number"
-            name="GST"
-            value={GST}
-            onChange={handleOnChange}
-            placeholder="Enter GST"
-            // style={{
-            //   boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
-            // }}
-            // className="border rounded-lg w-full py-2 px-3 focus:outline-none focus:ring focus:border-blue-300"
-            className=" rounded-[0.5rem] bg-[#161D29] p-[12px] text-[#F1F2FF]"
-          />
-        </div> */}
 
+          {/* Shipping */}
+          <div className="mb-4">
+            <label htmlFor="Shipping " className="block text-[#3c3c3c]">
+              Shipping
+            </label>
+            <input
+              required
+              type="number"
+              name="Shipping"
+              value={Shipping}
+              onChange={handleOnChange}
+              placeholder="Enter Shipping"
+              // style={{
+              //   boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
+              // }}
+              // className="border rounded-lg w-full py-2 px-3 focus:outline-none focus:ring focus:border-blue-300"
+              className=" rounded-[0.5rem] bg-[#161D29] p-[12px] text-[#F1F2FF]"
+            />
+          </div>
           <button
             type="submit"
-            className="mt-12 ml-48 rounded-[8px] bg-[#FFF970]  underline py-[12px] px-[15px] font-medium text-[#000814] select-none"
+            className=" mt-10 ml-48 rounded-[8px] bg-[#FFF970]  underline py-[12px] px-[15px] font-medium text-[#000814] select-none"
           >
             Calculate
           </button>
         </form>
       </div>
 
-      <div className="ml-[450px] -mt-[50px]  w-44 rounded-[8px] bg-[#ffe1d5] border-2 border-black   hover:bg-[#3c3c3c] transition-all duration-200 py-[12px] px-[15px] font-medium text-[#000814] select-none">
-        <h2 className=" text-4xl px-7">{Profit}</h2>
+      <div className="ml-[380px] -mt-[50px] w-16  rounded-[8px] bg-[#ffe1d5] border-2 border-black   hover:bg-[#3c3c3c] transition-all duration-200 py-[5px] px-[10px] font-medium text-[#000814] select-none">
+        <h2 className=" text-4xl ">{Profit}</h2>
       </div>
 
-      <div className="w-[450px] h-[75px] border-2 border-black mt-[75px] ml-[500px] rounded-lg  hover:bg-[#ffff] transition-all duration-200 ">
+      <div className="w-[450px] h-[75px] border-2 border-black mt-[60px] ml-[500px] rounded-lg  hover:bg-[#ffff] transition-all duration-200 ">
         <p className="px-5 py-3 select-none font-extrabold">
           Margin = (SellingPrice + ShippingPrice ) - ProductCost - (MPFEES +
           Taxes) - Packging
