@@ -174,7 +174,7 @@ const Calculater = () => {
         </form>
       </div>
 
-      <div className="ml-[380px] -mt-[50px] w-16  rounded-[8px] bg-[#ffe1d5] border-2 border-black   hover:bg-[#3c3c3c] transition-all duration-200 py-[5px] px-[10px] font-medium text-[#000814] select-none">
+      <div className="ml-[380px] -mt-[50px] w-16  rounded-[8px] bg-[#ffe1d5]    hover:bg-[#3c3c3c] transition-all duration-200 py-[5px] px-[10px] font-medium text-[#000814] select-none">
         <h2 className=" text-4xl ">{Profit}</h2>
       </div>
 
